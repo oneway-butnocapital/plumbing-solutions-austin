@@ -1,0 +1,221 @@
+:root{
+  --bn-ink:#111822; --bn-soft:#5a6675; --bn-line:#dfe5ec;
+  --bn-ground:#f3f5f8; --bn-card:#fff;
+  --bn-accent:#b45309; --bn-deep:#1e3a5f;
+  --bn-gutter:clamp(1.25rem,4vw,3rem);
+  --bn-round:14px;
+  --bn-lift:0 1px 2px rgba(17,24,34,.05),0 6px 20px rgba(17,24,34,.06);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bn-ground);color:var(--bn-ink);
+  font:17px/1.6 ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+h1,h2,h3{font-weight:700;letter-spacing:-.021em;line-height:1.2;margin:0}
+h1{font-size:clamp(2rem,4.4vw,2.9rem)}
+h2{font-size:clamp(1.25rem,2.2vw,1.6rem)}
+a{color:var(--bn-deep)}
+img{max-width:100%;display:block}
+.beacon-shell{max-width:1120px;margin:0 auto;padding:0 var(--bn-gutter)}
+.beacon-flag{position:absolute;left:-9999px}
+.beacon-flag:focus{left:1rem;top:1rem;background:#fff;padding:.6rem 1rem;z-index:99;border-radius:8px}
+
+/* masthead — scrolls away, unlike Ledger's sticky bar */
+.beacon-masthead{background:var(--bn-card);border-bottom:1px solid var(--bn-line)}
+.beacon-masthead__row{display:flex;align-items:center;gap:1.5rem;min-height:92px}
+.beacon-brand{display:flex;align-items:center;gap:.7rem;margin-right:auto;text-decoration:none;color:inherit}
+/* SEE LEDGER'S NOTE ABOVE: the height is pinned, max-width protects the
+   wide lockups, and 53px under-served a squarer logo badly. */
+.beacon-brand__mark{height:70px;width:auto;max-width:min(320px,54vw);object-fit:contain;
+  object-position:left center;flex:0 0 auto}
+.beacon-brand__glyph{width:40px;height:40px;border-radius:11px;background:var(--bn-deep);color:#fff;
+  display:grid;place-items:center;font-size:16px;font-weight:700;flex:0 0 auto}
+.beacon-brand__name{font-size:17px;font-weight:700;letter-spacing:-.01em}
+.beacon-menu{display:flex;align-items:center;gap:1.4rem;font-size:15px;font-weight:500}
+.beacon-menu a{color:var(--bn-soft);text-decoration:none}
+.beacon-menu a:hover,.beacon-menu a[aria-current]{color:var(--bn-accent)}
+
+/* the services disclosure — a <details>, so it works with no JavaScript */
+.beacon-trades{position:relative}
+.beacon-trades>summary{list-style:none;cursor:pointer;color:var(--bn-soft);font-weight:500;
+  display:inline-flex;align-items:center;gap:.4rem;-webkit-tap-highlight-color:transparent}
+.beacon-trades>summary::-webkit-details-marker{display:none}
+.beacon-trades>summary::after{content:"";width:.34em;height:.34em;margin-top:-.22em;
+  border-right:1.8px solid currentColor;border-bottom:1.8px solid currentColor;transform:rotate(45deg)}
+.beacon-trades>summary:hover,.beacon-trades[open]>summary{color:var(--bn-accent)}
+.beacon-trades[open]>summary::after{margin-top:.1em;transform:rotate(225deg)}
+.beacon-trades>summary:focus-visible{outline:2px solid var(--bn-accent);outline-offset:4px;border-radius:4px}
+.beacon-trades__list{position:absolute;top:calc(100% + 1.1rem);left:-1rem;z-index:20;
+  margin:0;padding:.5rem;list-style:none;min-width:240px;
+  background:var(--bn-card);border:1px solid var(--bn-line);border-radius:var(--bn-round);
+  box-shadow:var(--bn-lift)}
+.beacon-trades__list a{display:block;padding:.5rem .75rem;border-radius:9px;
+  color:var(--bn-ink);text-decoration:none;font-size:15px}
+.beacon-trades__list a:hover{background:var(--bn-ground);color:var(--bn-accent)}
+.beacon-trades__all{border-bottom:1px solid var(--bn-line);margin-bottom:.35rem;padding-bottom:.35rem}
+.beacon-trades__all a{font-weight:600}
+
+/* the fact strip — Ledger has no second header row at all */
+.beacon-strip{background:var(--bn-deep);color:#e8eef6}
+.beacon-strip__row{display:flex;align-items:center;gap:1rem 1.75rem;flex-wrap:wrap;
+  padding:.7rem 0;font-size:14.5px}
+.beacon-strip__row p{margin:0}
+.beacon-strip__open{color:#b9c9dd}
+.beacon-ring{margin-left:auto;color:#fff;font-weight:700;text-decoration:none;
+  border:1.5px solid rgba(255,255,255,.35);border-radius:999px;padding:.3rem .95rem}
+.beacon-ring:hover{background:rgba(255,255,255,.12)}
+
+/* banner — picture beside the words, never behind them */
+.beacon-banner{background:var(--bn-card);border-bottom:1px solid var(--bn-line)}
+.beacon-banner__row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3.5rem);
+  align-items:center;padding-top:clamp(2.2rem,5vw,3.6rem);padding-bottom:clamp(2.2rem,5vw,3.6rem)}
+.beacon-banner--bare .beacon-banner__row{grid-template-columns:1fr;max-width:46rem}
+.beacon-banner__said{color:var(--bn-soft);font-size:1.07rem;margin:.9rem 0 0}
+.beacon-banner__acts{display:flex;flex-wrap:wrap;gap:.7rem;margin:1.5rem 0 0}
+.beacon-banner__plan img{border-radius:var(--bn-round);box-shadow:var(--bn-lift);
+  aspect-ratio:3/2;object-fit:cover;width:100%;height:auto}
+.beacon-act{display:inline-block;text-decoration:none;font-weight:600;font-size:15.5px;
+  padding:.72rem 1.3rem;border-radius:999px;border:1.6px solid transparent}
+.beacon-act--solid{background:var(--bn-accent);color:#fff}
+.beacon-act--solid:hover{filter:brightness(1.08)}
+.beacon-act--hollow{border-color:var(--bn-line);color:var(--bn-ink);background:var(--bn-card)}
+.beacon-act--hollow:hover{border-color:var(--bn-accent);color:var(--bn-accent)}
+
+/* preamble — three columns of facts, where Ledger has a <dl>.
+   IT SITS AFTER THE ABOUT SECTION, so it has no negative margin tucking it
+   under the banner any more, and it carries its own band: between two
+   blocks it would otherwise inherit one's bottom padding and the other's
+   top padding and float in eight rems of nothing. */
+.beacon-facts{padding-bottom:clamp(2.4rem,5vw,4rem)}
+.beacon-block+.beacon-facts{padding-top:0}
+.beacon-facts+.beacon-block{padding-top:0}
+.beacon-preamble{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;
+  background:var(--bn-card);border:1px solid var(--bn-line);border-radius:var(--bn-round);
+  box-shadow:var(--bn-lift);padding:1.3rem 1.5rem}
+.beacon-preamble__col h2{font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--bn-soft);font-weight:700}
+.beacon-preamble__col p{margin:.35rem 0 0;font-size:15.5px}
+
+/* blocks and prose */
+.beacon-block{padding:clamp(2.4rem,5vw,4rem) 0}
+/* TWO BLOCKS IN A ROW PAY THE PADDING ONCE. Ledger writes style="padding-top:0"
+   into the markup of every block after the first, which is a layout decision
+   living in pages.js where nobody looking at the stylesheet can see it. The
+   first render of Beacon's home page had an eight-rem hole between the About
+   section and the services. */
+.beacon-block+.beacon-block{padding-top:0}
+.beacon-block__lede{max-width:46rem;margin-bottom:1.6rem}
+.beacon-block__lede p{color:var(--bn-soft);margin:.7rem 0 0}
+.beacon-prose{max-width:46rem}
+.beacon-prose h2{margin:2rem 0 .7rem}
+.beacon-prose p{margin:0 0 1rem}
+.beacon-prose ul{margin:0 0 1rem;padding-left:1.15rem}
+.beacon-prose li{margin:0 0 .4rem}
+.beacon-lede{font-size:1.1rem;color:var(--bn-soft)}
+
+/* service page: the prose and the hours slate side by side */
+.beacon-spread{display:grid;grid-template-columns:minmax(0,1fr) 20rem;gap:clamp(1.5rem,4vw,3rem);
+  align-items:start}
+.beacon-spread--solo{grid-template-columns:minmax(0,1fr)}
+.beacon-aside{position:sticky;top:1.5rem}
+
+/* tiles — Ledger's numbered list, re-thought */
+.beacon-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;list-style:none;margin:0;padding:0}
+.beacon-trade>a,.beacon-trade>span{display:block;height:100%;text-decoration:none;color:inherit;
+  background:var(--bn-card);border:1px solid var(--bn-line);border-radius:var(--bn-round);
+  padding:1.25rem 1.35rem;box-shadow:var(--bn-lift)}
+.beacon-trade>a:hover{border-color:var(--bn-accent);transform:translateY(-2px);transition:.15s}
+.beacon-trade__tally{display:block;font-size:12px;font-weight:700;letter-spacing:.1em;
+  color:var(--bn-accent)}
+.beacon-trade__name{display:block;font-weight:700;font-size:1.05rem;margin:.45rem 0 .3rem}
+.beacon-trade__said{display:block;color:var(--bn-soft);font-size:14.5px;line-height:1.5}
+/* A TILE THAT LOOKS CLICKABLE AND IS NOT IS WORSE THAN ONE THAT PLAINLY IS
+   NOT. The last three services are shown and unlinked — the ring caps the
+   body at three — so they are visibly muted rather than quietly inert. */
+.beacon-trade--flat>span{opacity:.62;box-shadow:none}
+
+/* hours and map */
+.beacon-whereabouts{display:grid;grid-template-columns:minmax(0,1fr) 20rem;gap:clamp(1.5rem,4vw,3rem);
+  align-items:start}
+.beacon-plan iframe{width:100%;height:340px;border:0;border-radius:var(--bn-round);
+  box-shadow:var(--bn-lift);display:block}
+.beacon-slate{background:var(--bn-card);border:1px solid var(--bn-line);border-radius:var(--bn-round);
+  box-shadow:var(--bn-lift);padding:1.2rem 1.35rem}
+.beacon-slate h2{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--bn-soft);
+  margin-bottom:.7rem}
+.beacon-slate__row{display:flex;justify-content:space-between;gap:1rem;
+  padding:.42rem 0;font-size:15px;border-top:1px solid var(--bn-line)}
+.beacon-slate__row:first-of-type{border-top:0}
+.beacon-slate--shut{color:var(--bn-soft)}
+.beacon-slate__note{margin:.9rem 0 0;font-size:13.5px;color:var(--bn-soft)}
+
+/* the dividers — a breather between bands, not a section heading.
+   THE DEEP GROUND IS THE POINT: every other band on the home page is white
+   or near-white, so a line of the same colour would read as another
+   section rather than as the gap between two. */
+.beacon-divider{background:var(--bn-deep);color:#fff;
+  padding:clamp(1.8rem,3.5vw,2.8rem) 0}
+.beacon-divider p{margin:0;text-align:center;font-weight:600;
+  font-size:clamp(1.15rem,2.4vw,1.5rem);letter-spacing:-.015em;
+  max-width:34rem;margin-inline:auto;text-wrap:balance}
+/* A BLOCK EITHER SIDE OF IT KEEPS ITS OWN PADDING. The +.beacon-block rule
+   above strips the top padding of whatever follows a block, and a divider
+   between two of them is exactly where that strip must not apply — the band
+   needs air under it. */
+.beacon-divider+.beacon-block{padding-top:clamp(2.4rem,5vw,4rem)}
+
+/* the ring sentence */
+.beacon-kicker{margin:2.4rem 0 0;padding-top:1.3rem;border-top:1px solid var(--bn-line);
+  color:var(--bn-soft);font-size:15.5px}
+
+/* the contact form */
+.beacon-form{background:var(--bn-card);border:1px solid var(--bn-line);border-radius:var(--bn-round);
+  box-shadow:var(--bn-lift);padding:1.5rem}
+.beacon-form label{display:block;font-size:13px;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--bn-soft);margin:1rem 0 .35rem}
+.beacon-form label:first-child{margin-top:0}
+.beacon-form input,.beacon-form textarea{width:100%;font:inherit;font-size:16px;color:inherit;
+  background:var(--bn-ground);border:1px solid var(--bn-line);border-radius:10px;padding:.65rem .8rem}
+.beacon-form textarea{min-height:8rem;resize:vertical}
+.beacon-form input:focus,.beacon-form textarea:focus{outline:2px solid var(--bn-accent);outline-offset:1px}
+.beacon-form button{margin-top:1.3rem;font:inherit;font-weight:700;font-size:15.5px;cursor:pointer;
+  background:var(--bn-accent);color:#fff;border:0;border-radius:999px;padding:.75rem 1.5rem}
+.beacon-form__note{margin:1rem 0 0;font-size:14px;color:var(--bn-soft)}
+
+/* colophon */
+.beacon-colophon{background:var(--bn-deep);color:#cdd9e7;padding:clamp(2.2rem,4vw,3.2rem) 0 1.4rem}
+.beacon-colophon a{color:#fff;text-decoration:none}
+.beacon-colophon a:hover{color:var(--bn-accent)}
+.beacon-colophon__spread{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:1.8rem}
+.beacon-colophon__title{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#8fa6c0}
+.beacon-colophon p{margin:.7rem 0 0;font-size:15px;line-height:1.6}
+.beacon-colophon ul{list-style:none;margin:.7rem 0 0;padding:0;font-size:15px}
+.beacon-colophon li{margin:0 0 .4rem}
+.beacon-badges{display:flex;gap:.65rem}
+.beacon-badges svg{width:19px;height:19px;fill:#8fa6c0}
+.beacon-badges a:hover svg{fill:#fff}
+.beacon-colophon__foot{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;margin-top:2rem;
+  padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.14);font-size:13.5px;color:#8fa6c0}
+
+@media (max-width:860px){
+  .beacon-banner__row{grid-template-columns:1fr}
+  /* THE WORDS FIRST ON A PHONE, so the H1 and the Call button are on screen
+     without scrolling — section 1 of the ratified service-page shape. */
+  .beacon-banner__plan{order:2}
+  .beacon-preamble{grid-template-columns:1fr}
+  .beacon-spread,.beacon-whereabouts{grid-template-columns:1fr}
+  .beacon-aside{position:static}
+  .beacon-tiles{grid-template-columns:1fr 1fr}
+  .beacon-colophon__spread{grid-template-columns:1fr}
+}
+
+@media (max-width:620px){
+  /* THE ROW WRAPS RATHER THAN COLLAPSING INTO A HAMBURGER, because these
+     sites ship no JavaScript to open one with. */
+  .beacon-masthead__row{flex-wrap:wrap;min-height:0;padding:.75rem 0 .1rem;gap:.8rem 1.2rem}
+  .beacon-brand__mark{height:60px;max-width:min(268px,54vw)}
+  .beacon-menu{order:3;flex-basis:100%;flex-wrap:wrap;gap:.4rem 1.1rem;font-size:14.5px;
+    border-top:1px solid var(--bn-line);margin-top:.15rem;padding:.65rem 0}
+  .beacon-trades__list{top:calc(100% + .7rem);left:-.9rem}
+  .beacon-ring{margin-left:0}
+  .beacon-tiles{grid-template-columns:1fr}
+}

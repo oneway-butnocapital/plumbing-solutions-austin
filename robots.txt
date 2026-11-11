@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://plumbing-solutions-austin.9-s.org/sitemap.xml
