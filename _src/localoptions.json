@@ -351,7 +351,9 @@
   "logo": "assets/logo.png",
   "structure": "beacon",
   "imageSet": "set-2",
-  "verification": [],
+  "verification": [
+    "5B3aSlZ11461Aj8Oc6dxyYfcKzrKTlEH2UmPnaOO7uw"
+  ],
   "home": {
     "sub": "We handle plumbing problems in homes and buildings across Austin, from drains and pipes to fixtures and water lines.",
     "title": "Plumbing in Austin, TX | Plumbing Solutions Austin",
@@ -363,7 +365,8 @@
       "We hear about drains gurgling in kitchens, water pooling beside toilets, and pipes dripping beneath sinks. We also find sewer odor in bathrooms, low flow at faucets, and damp patches on ceilings.",
       "We may start a plumbing job beneath a sink or behind a bathroom wall. The cause is often a worn connection or blocked pipe, and we repair the affected part. We cover Austin, Rollingwood, West Lake Hills, and Lost Creek.",
       "For a water heater, we may repair a limited fault in a replaceable part. We may recommend replacement if the tank has a leak or corrosion. We tell you which before any price is discussed."
-    ]
+    ],
+    "servicesLede": "What we are called out for most. Each of the six has its own page — what the work involves, and what changes the price."
   },
   "now": "2026-11-11T06:18:22.822Z"
 }
